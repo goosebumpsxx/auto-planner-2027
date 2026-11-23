@@ -28,7 +28,7 @@
       -webkit-font-smoothing: antialiased;
     }
     .wrap {
-      max-width: 860px;
+      max-width: 960px;
       margin: 0 auto;
       padding: 28px 24px 72px;
     }
@@ -105,40 +105,130 @@
       font-weight: 400;
       margin: 0 0 18px;
     }
+    .section-title {
+      font-family: var(--serif);
+      font-size: clamp(24px, 3vw, 30px);
+      line-height: 1.2;
+      font-weight: 400;
+      margin: 0 0 8px;
+    }
+    .section-sub {
+      color: var(--muted);
+      font-size: 15px;
+      margin: 0 0 22px;
+      max-width: 640px;
+    }
     .lead {
       font-size: 18px;
       color: var(--muted);
-      max-width: 660px;
-      margin: 0 0 28px;
+      max-width: 680px;
+      margin: 0 0 26px;
     }
     .actions {
       display: flex;
       flex-wrap: wrap;
+      align-items: center;
       gap: 14px;
-      margin-bottom: 48px;
+      margin-bottom: 14px;
     }
     .btn {
       display: inline-block;
-      padding: 12px 20px;
+      padding: 13px 22px;
       font-family: var(--mono);
       font-size: 12px;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.07em;
       text-transform: uppercase;
       text-decoration: none;
       border: 1px solid var(--ink);
+      transition: transform 120ms ease;
+    }
+    .btn:hover {
+      transform: translate(-1px, -1px);
     }
     .btn-primary {
       background: var(--ink);
       color: var(--paper);
       box-shadow: 3px 3px 0 var(--muted);
+      font-weight: 700;
     }
     .btn-secondary {
       background: var(--paper);
       color: var(--ink);
     }
+    .promo-note {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.03em;
+      margin: 0 0 44px;
+    }
+    .promo-note code {
+      background: var(--paper-alt);
+      border: 1px solid var(--rule);
+      padding: 1px 6px;
+      color: var(--ink);
+      font-weight: 700;
+    }
+
+    /* Visual Preview Gallery */
+    .gallery {
+      margin-bottom: 52px;
+      padding-top: 32px;
+      border-top: 1px solid var(--rule);
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+    }
+    .shot-card {
+      margin: 0;
+      border: 1px solid var(--ink);
+      background: var(--paper);
+      box-shadow: 3px 3px 0 var(--rule);
+      overflow: hidden;
+    }
+    .shot-card.featured {
+      grid-column: 1 / -1;
+      box-shadow: 4px 4px 0 var(--ink);
+    }
+    .shot-card a {
+      display: block;
+      background: var(--paper);
+    }
+    .shot-card img {
+      display: block;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
+      border-bottom: 1px solid var(--ink);
+    }
+    .shot-card figcaption {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 8px 16px;
+      padding: 12px 16px;
+      background: var(--paper-alt);
+    }
+    .shot-tag {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink);
+      font-weight: 700;
+    }
+    .shot-desc {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
       gap: 18px;
       margin-bottom: 48px;
     }
@@ -169,9 +259,9 @@
     .pricing-box {
       border: 1px solid var(--ink);
       background: var(--paper-alt);
-      padding: 24px;
+      padding: 26px;
       box-shadow: 3px 3px 0 var(--ink);
-      margin-bottom: 48px;
+      margin-bottom: 28px;
     }
     .pricing-box h2 {
       font-family: var(--serif);
@@ -180,12 +270,49 @@
       margin: 0 0 10px;
     }
     .pricing-list {
-      margin: 14px 0 0;
+      margin: 14px 0 20px;
       padding-left: 18px;
       color: var(--ink);
       font-size: 15px;
     }
     .pricing-list li { margin-bottom: 6px; }
+    .pricing-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 14px;
+    }
+
+    /* Companion Product Card */
+    .companion-card {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px 24px;
+      border: 1px solid var(--ink);
+      background: var(--paper);
+      padding: 20px 24px;
+      margin-bottom: 48px;
+    }
+    .companion-copy {
+      flex: 1 1 420px;
+    }
+    .companion-copy .eyebrow {
+      margin-bottom: 6px;
+    }
+    .companion-copy h2 {
+      font-family: var(--serif);
+      font-size: 21px;
+      font-weight: 400;
+      margin: 0 0 6px;
+    }
+    .companion-copy p {
+      margin: 0;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
     footer {
       border-top: 1px solid var(--rule);
       padding-top: 20px;
@@ -198,6 +325,19 @@
       color: var(--muted);
     }
     footer a { color: var(--ink); }
+
+    @media (max-width: 680px) {
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+      .shot-card.featured {
+        grid-column: auto;
+      }
+      .btn {
+        width: 100%;
+        text-align: center;
+      }
+    }
   </style>
 </head>
 <body>
@@ -219,16 +359,59 @@
     </header>
 
     <main>
-      <div class="eyebrow">Google Sheets Editor Add-on</div>
+      <div class="eyebrow">Google Sheets Editor Add-on &middot; Template &amp; Android Pocket View</div>
       <h1>Auto Planner 2027 — Calendar &amp; Task Sync</h1>
       <p class="lead">
         A calm, distraction-free e-ink planner inside your own Google Sheet. Automatically sync Google Calendar, Outlook/iCloud ICS feeds, linked Sheets, daily habits, and Pocket View—with zero external servers.
       </p>
 
       <div class="actions">
-        <a class="btn btn-primary" href="https://einkpapergrid.gumroad.com/l/auto-planner-2027" target="_blank" rel="noopener">Get Pro License — $19 One-Time</a>
+        <a class="btn btn-primary" href="https://einkpapergrid.gumroad.com/l/auto-planner-2027/EARLY2027" target="_blank" rel="noopener">Get Pro License ($19 one-time &middot; code EARLY2027 for $9)</a>
         <a class="btn btn-secondary" href="support.html">Setup &amp; Support</a>
       </div>
+      <p class="promo-note">
+        Includes instant-copy Google Sheet template + Android Pocket View v2.0.0 APK + lifetime Pro License Key for the Sheets Add-on &middot; Launch code <code>EARLY2027</code> auto-applied at checkout.
+      </p>
+
+      <section class="gallery" aria-labelledby="gallery-heading">
+        <div class="eyebrow">Visual Preview &middot; Warm E-Ink Layout</div>
+        <h2 id="gallery-heading" class="section-title">Calm editorial views, updated automatically</h2>
+        <p class="section-sub">
+          Every tab is formatted for crisp readability on desktop, laptop, and e-ink monitors—no cluttered sidebars, neon badges, or recurring SaaS paywalls.
+        </p>
+
+        <div class="gallery-grid">
+          <figure class="shot-card featured">
+            <a href="assets/screenshot-1-week-1280x800.png" target="_blank" rel="noopener">
+              <img src="assets/screenshot-1-week-1280x800.png" alt="Auto Planner 2027 Week view showing synced Google Calendar events, ICS feeds, and weekly top 3 priorities in an e-ink Google Sheet grid" width="1280" height="800">
+            </a>
+            <figcaption>
+              <span class="shot-tag">01 / Weekly Timeblocking</span>
+              <span class="shot-desc">Google Calendar, Outlook/iCloud ICS feeds, and My Tasks unified in one week grid.</span>
+            </figcaption>
+          </figure>
+
+          <figure class="shot-card">
+            <a href="assets/screenshot-2-today-1280x800.png" target="_blank" rel="noopener">
+              <img src="assets/screenshot-2-today-1280x800.png" alt="Auto Planner 2027 Today view displaying today's schedule, due tasks, and daily habits in a clean e-ink layout" width="1280" height="800" loading="lazy">
+            </a>
+            <figcaption>
+              <span class="shot-tag">02 / Daily Agenda &amp; Tasks</span>
+              <span class="shot-desc">Today's meetings, priority due items, and active habits at a glance.</span>
+            </figcaption>
+          </figure>
+
+          <figure class="shot-card">
+            <a href="assets/screenshot-4-habits-1280x800.png" target="_blank" rel="noopener">
+              <img src="assets/screenshot-4-habits-1280x800.png" alt="Auto Planner 2027 Habits tracker showing monthly habit streaks and check-in grid" width="1280" height="800" loading="lazy">
+            </a>
+            <figcaption>
+              <span class="shot-tag">03 / Habits &amp; Streaks</span>
+              <span class="shot-desc">Monthly habit grid with live streaks and optional private Google Forms logging.</span>
+            </figcaption>
+          </figure>
+        </div>
+      </section>
 
       <div class="grid">
         <article class="card">
@@ -244,7 +427,7 @@
         <article class="card">
           <div class="tag">03 / Companion</div>
           <h2>Pocket View</h2>
-          <p>Open a read-only e-ink agenda on your phone showing Today’s schedule, tasks, and habits—served directly from your own Google Apps Script deployment.</p>
+          <p>Open a read-only e-ink agenda on your phone—or install the Android Pocket View v2.0.0 APK—served directly from your own Google Apps Script deployment.</p>
         </article>
         <article class="card">
           <div class="tag">04 / Privacy</div>
@@ -255,15 +438,29 @@
 
       <section class="pricing-box">
         <div class="eyebrow">Transparent Pricing — Zero Subscriptions</div>
-        <h2>7-Day Free Pro Trial, then $19 One-Time</h2>
+        <h2>7-Day Free Pro Trial, then $19 One-Time ($9 with <code>EARLY2027</code>)</h2>
         <p style="margin:0;color:var(--muted);font-size:15px;">
-          Install from the Google Workspace Marketplace and start with a 7-day full-feature Pro trial automatically.
+          Install from the Google Workspace Marketplace and start with a 7-day full-feature Pro trial automatically, or grab the complete Gumroad package anytime.
         </p>
         <ul class="pricing-list">
           <li><strong>Free Tier (Forever):</strong> Manual <em>Sync now</em> for your primary Google Calendar, Today, My Tasks, and Habits.</li>
-          <li><strong>Pro License ($19 one-time via Gumroad):</strong> Unlocks unlimited Google Calendars, ICS/Outlook/iCloud feeds, linked Google Sheets, scheduled background auto-sync, and Pocket View.</li>
+          <li><strong>Pro License ($19 one-time via Gumroad · $9 with code <code>EARLY2027</code>):</strong> Includes the instant-copy Google Sheet template, Android Pocket View v2.0.0 APK, and a lifetime Pro License Key unlocking unlimited calendars, ICS feeds, linked Sheets, scheduled auto-sync, and Pocket View.</li>
         </ul>
+        <div class="pricing-actions">
+          <a class="btn btn-primary" href="https://einkpapergrid.gumroad.com/l/auto-planner-2027/EARLY2027" target="_blank" rel="noopener">Get Pro License ($19 one-time &middot; code EARLY2027 for $9)</a>
+        </div>
       </section>
+
+      <aside class="companion-card" aria-label="Companion E-Ink PDF Planner">
+        <div class="companion-copy">
+          <div class="eyebrow">Companion Product &middot; Digital Paper Tablets</div>
+          <h2>E-Ink Planner 2027 — $9</h2>
+          <p>
+            Prefer writing by hand? Pair your synced Google Sheet with our hyperlinked 2027 PDF planner crafted specifically for <strong>reMarkable, Kindle Scribe, and Boox</strong> e-ink tablets.
+          </p>
+        </div>
+        <a class="btn btn-secondary" href="https://einkpapergrid.gumroad.com/l/eink-planner-2027" target="_blank" rel="noopener">View E-Ink Planner 2027 ($9) &rarr;</a>
+      </aside>
     </main>
 
     <footer>
